@@ -2,13 +2,7 @@
 
 A built-from-scratch API with an MVC architecture.  Used to get, push, post, and delete authors in books and books in a library.
 
-## Setup
-
-1. Fork and clone this repository
-2. Run `npm install`
-3. Run the tests with `npm test`
-4. Run the server in development mode with `npm run dev` or run it in production mode with `npm start`
-
+Deployed on Heroku
 
 ## Development Requirements
 Follow RESTful patterns
@@ -34,3 +28,9 @@ You may optionally test your project.
 ### RESTful routes can:
 Create, Read, Update, and Delete books
 Create, Read, Update, and Delete authors through books
+
+## Setup
+1. Fork and clone this repository
+2. Run `npm install`
+3. Run the tests with `npm test`
+4. Run the server in development mode with `npm run dev` or run it in production mode with `npm start`
