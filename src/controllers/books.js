@@ -16,7 +16,10 @@ function getOne (req, res, next) {
 
 function create (req, res, next) {
   const name = req.body.name
-  const data = model.create(name)
+  const borrowed = req.body.borrowed
+  const description = req.body.description
+  const authors = req.body.authors
+  const data = model.create(name, borrowed, description, authors)
 
   if(data.errors) {
     return next({ status: 400, message: `Could not create new book`, errors: data.errors })
@@ -38,4 +41,9 @@ function remove (req, res, next) {
   res.status(200).json({ data: removedBook })
 }
 
-module.exports = { getAll, getOne, create, update, remove, }
+function addAuthorId (req, res, next) {
+  return uuid()
+}
+
+
+module.exports = { getAll, getOne, create, update, remove }
