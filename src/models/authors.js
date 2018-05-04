@@ -20,13 +20,14 @@ function getOneAuthor (book, authorId) {
 }
 
 function createAuthor (id, firstName, lastName) {
-  const book = modelBooks.getOne(id)
   const contents = fs.readFileSync(file, 'utf-8')
   const books = JSON.parse(contents)
+  const book = books.find(book => book.id === id)
+  if (!book) return { errors:  `can not find ${id}`}
+  console.log('createAuthor book',book)
   let index = books.indexOf(book)
-  console.log(index);
+  console.log('createAuthor index',index);
   const authors = book.authors
-  console.log(book)
   const errors = []
   let response
   if (!firstName) {
@@ -40,7 +41,7 @@ function createAuthor (id, firstName, lastName) {
     authors.push(author)
     response = author
     books[index] = book
-    console.log(books)
+    console.log('createAuthor books', books)
     const json = JSON.stringify(books)
     fs.writeFileSync(file, json)
   }
