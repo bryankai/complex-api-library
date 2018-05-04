@@ -13,10 +13,8 @@ function getAll (limit) {
 function getOne (id) {
   const contents = fs.readFileSync(file, 'utf-8')
   const books = JSON.parse(contents)
-  console.log('getOne', books)
   const book = books.find(book => book.id === id)
   index = books.indexOf(book)
-  console.log('getOne index',index)
   if (!book) return { errors:  `can not find ${id}`}
   return book
 }
@@ -49,7 +47,6 @@ function update (id, name) {
   const contents = fs.readFileSync(file, 'utf-8')
   const books = JSON.parse(contents)
   const book = getOne(id)
-  // const index = books.indexOf(book)
   books[index].name = name
   const json = JSON.stringify(books)
   fs.writeFileSync(file, json)
@@ -60,7 +57,6 @@ function remove (id) {
   const contents = fs.readFileSync(file, 'utf-8')
   const books = JSON.parse(contents)
   const book = getOne(id)
-  // const index = books.indexOf(book)
   const removedBook = books.splice(index,1)
   const json = JSON.stringify(books)
   fs.writeFileSync(file, json)
